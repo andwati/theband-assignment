@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import {useEffect, useState} from "react";
 import Banner from "../components/Banner";
 import ProductList from "../components/ProductList";
 import Testimonials from "../components/Testimonials";
-import Footer from "../components/Footer";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -14,15 +12,13 @@ const Home = () => {
             .then((data) => setProducts(data));
     }, []);
 
-    return (
-        <div className="min-h-screen bg-gray-100 text-gray-900">
+    return (<div className="min-h-screen bg-gray-100 text-gray-900">
 
-            <Banner />
-            <ProductList products={products} />
-            <Testimonials />
+            <Banner/>
+            <ProductList products={products}/>
+            <Testimonials/>
 
-        </div>
-    );
+        </div>);
 };
 
 export default Home;
