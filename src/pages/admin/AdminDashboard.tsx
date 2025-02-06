@@ -10,9 +10,9 @@ import {
     Menu,
     X
 } from 'lucide-react'
-import ProductManagement from './admin/ProductManagement'
-import Analytics from './admin/Analytics'
-import UserManagement from './admin/UserManagement'
+import ProductManagement from './ProductManagement'
+import Analytics from './Analytics'
+import UserManagement from './UserManagement'
 import Overview from './admin/Overview'
 
 const AdminDashboard = () => {

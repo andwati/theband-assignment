@@ -1,12 +1,12 @@
 // src/pages/ProductList.tsx
-import { useState, useEffect } from 'react'
+import {useEffect, useState} from 'react'
 import useStore from '../../store/useStore.ts'
 
 type ViewMode = 'grid' | 'list'
 type SortOption = 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc'
 
 const ProductList = () => {
-    const { products, isLoading, error, fetchProducts } = useStore()
+    const {products, isLoading, error, fetchProducts} = useStore()
     const [viewMode, setViewMode] = useState<ViewMode>('grid')
     const [sortBy, setSortBy] = useState<SortOption>('name-asc')
     const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -18,7 +18,10 @@ const ProductList = () => {
 
     const categories = ['all', ...new Set(products.map(product => product.category))]
 
-    const sortProducts = (products: typeof useStore.getState().products) => {
+    const sortProducts = (products: typeof useStore.getState
+    ().products
+) =>
+    {
         return [...products].sort((a, b) => {
             switch (sortBy) {
                 case 'price-asc':
@@ -41,16 +44,13 @@ const ProductList = () => {
     const sortedProducts = sortProducts(filteredProducts)
 
     if (isLoading) {
-        return (
-            <div className="flex items-center justify-center min-h-screen">
+        return (<div className="flex items-center justify-center min-h-screen">
                 <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
-            </div>
-        )
+            </div>)
     }
 
     if (error) {
-        return (
-            <div className="text-center py-10">
+        return (<div className="text-center py-10">
                 <p className="text-red-500">{error}</p>
                 <button
                     onClick={() => fetchProducts()}
@@ -58,12 +58,10 @@ const ProductList = () => {
                 >
                     Try Again
                 </button>
-            </div>
-        )
+            </div>)
     }
 
-    return (
-        <div className="container mx-auto px-4 py-8">
+    return (<div className="container mx-auto px-4 py-8">
             {/* Controls */}
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">
                 <div className="flex items-center space-x-4">
@@ -71,13 +69,13 @@ const ProductList = () => {
                         onClick={() => setViewMode('grid')}
                         className={`p-2 rounded ${viewMode === 'grid' ? 'bg-gray-200' : ''}`}
                     >
-                        <Grid className="h-5 w-5" />
+                        <Grid className="h-5 w-5"/>
                     </button>
                     <button
                         onClick={() => setViewMode('list')}
                         className={`p-2 rounded ${viewMode === 'list' ? 'bg-gray-200' : ''}`}
                     >
-                        <List className="h-5 w-5" />
+                        <List className="h-5 w-5"/>
                     </button>
                 </div>
 
@@ -87,11 +85,9 @@ const ProductList = () => {
                         onChange={(e) => setSelectedCategory(e.target.value)}
                         className="p-2 border rounded"
                     >
-                        {categories.map(category => (
-                            <option key={category} value={category}>
+                        {categories.map(category => (<option key={category} value={category}>
                                 {category.charAt(0).toUpperCase() + category.slice(1)}
-                            </option>
-                        ))}
+                            </option>))}
                     </select>
 
                     <select
@@ -108,17 +104,10 @@ const ProductList = () => {
             </div>
 
             {/* Product Grid/List */}
-            <div className={viewMode === 'grid'
-                ? "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
-                : "space-y-4"
-            }>
-                {sortedProducts.map((product) => (
-                    <div
+            <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6" : "space-y-4"}>
+                {sortedProducts.map((product) => (<div
                         key={product.id}
-                        className={viewMode === 'grid'
-                            ? "border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-                            : "flex border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-                        }
+                        className={viewMode === 'grid' ? "border rounded-lg overflow-hidden hover:shadow-lg transition-shadow" : "flex border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"}
                     >
                         <div className={viewMode === 'grid' ? "aspect-w-1 aspect-h-1" : "w-48 h-48"}>
                             <img
@@ -136,10 +125,8 @@ const ProductList = () => {
                                 {product.name}
                             </Link>
                             <p className="text-gray-600 mt-2">{product.description}</p>
-                            <div className={viewMode === 'grid'
-                                ? "mt-4 flex justify-between items-center"
-                                : "mt-4 flex justify-between items-center"
-                            }>
+                            <div
+                                className={viewMode === 'grid' ? "mt-4 flex justify-between items-center" : "mt-4 flex justify-between items-center"}>
                 <span className="text-xl font-bold">
                   ${product.price.toFixed(2)}
                 </span>
@@ -151,17 +138,13 @@ const ProductList = () => {
                                 </button>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    </div>))}
             </div>
 
-            {sortedProducts.length === 0 && (
-                <div className="text-center py-10">
+            {sortedProducts.length === 0 && (<div className="text-center py-10">
                     <p className="text-gray-500">No products found.</p>
-                </div>
-            )}
-        </div>
-    )
+                </div>)}
+        </div>)
 }
 
 export default ProductList
