@@ -1,4 +1,5 @@
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
     product: {
@@ -11,8 +12,13 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+    const navigate = useNavigate();
+
     return (
-        <div className="bg-white p-4 shadow-md rounded-md">
+        <div
+            className="bg-white p-4 shadow-md rounded-md cursor-pointer hover:shadow-lg transition"
+            onClick={() => navigate(`/product/${product.id}`)}
+        >
             <img src={product.image} alt={product.title} className="h-40 mx-auto" />
             <h3 className="text-lg font-semibold mt-2">{product.title}</h3>
             <p className="text-gray-600">${product.price}</p>

@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
-    const [cartCount, setCartCount] = useState(0);
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
@@ -17,11 +16,11 @@ const Home = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 text-gray-900">
-            <Navbar cartCount={cartCount} />
+
             <Banner />
             <ProductList products={products} />
             <Testimonials />
-            <Footer />
+
         </div>
     );
 };
