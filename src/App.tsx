@@ -1,10 +1,10 @@
 // src/App.tsx
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
-import ProductList from './pages/ProductList'
-import ProductDetail from './pages/ProductDetail'
-import Login from './pages/Login'
-import AdminDashboard from './pages/AdminDashboard'
+import ProductList from './pages/product/ProductList.tsx'
+import ProductDetail from './pages/product/ProductDetail.tsx'
+import Login from './pages/auth/Login.tsx'
+import AdminDashboard from './pages/admin/AdminDashboard'
 import useStore from './store/useStore'
 
 // Auth guard component

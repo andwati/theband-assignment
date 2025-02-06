@@ -1,8 +1,6 @@
 // src/pages/ProductList.tsx
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Grid, List, ChevronDown } from 'lucide-react'
-import useStore from '../store/useStore'
+import useStore from '../../store/useStore.ts'
 
 type ViewMode = 'grid' | 'list'
 type SortOption = 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc'

@@ -1,7 +1,7 @@
 // src/pages/Login.tsx
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useStore from '../store/useStore'
+import useStore from '../../store/useStore.ts'
 
 const Login = () => {
     const navigate = useNavigate()
