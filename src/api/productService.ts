@@ -1,9 +1,5 @@
 import api from "./api";
 
-export const getProducts = async () => {
-    const response = await api.get("/products");
-    return response.data;
-};
 
 export const getProductById = async (id: number) => {
     const response = await api.get(`/products/${id}`);
@@ -18,10 +14,6 @@ export const createProduct = async (product: any) => {
 export const updateProduct = async (id: number, product: any) => {
     const response = await api.put(`/products/${id}`, product);
     return response.data;
-};
-
-export const deleteProduct = async (id: number) => {
-    await api.delete(`/products/${id}`);
 };
 
 
